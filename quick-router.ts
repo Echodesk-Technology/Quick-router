@@ -99,32 +99,39 @@ export function createPopState(routes : any) {
 export class QuickRouterLink extends HTMLElement {
     constructor() {
         super();
+        const t: any = this
         const linkTo = this.getAttribute('to');
         if (!linkTo) {
             new QuickError(`to attribute must be specified to route, quick-link returned ${linkTo}`)
         }
-        const link: any = document.createElement('a');
-        link.href = linkTo;
-        link.innerHTML = this.innerHTML
+        const customTag: any = document.createElement('a');
+        customTag.href = linkTo;
+        
+        customTag.innerHTML = this.innerHTML
         if (this.getAttribute("ref")) {
-            link.id = this.getAttribute("ref");
+            customTag.id = this.getAttribute("ref");
         }
         if (this.getAttribute("id")) {
-            link.id = this.getAttribute("id");
+            customTag.id = this.getAttribute("id");
         }
-        if (this.getAttribute("download")) {
-            link.download = this.getAttribute("download")
-        }
-        this.parentNode?.insertBefore(link, this);
+        
+        this.parentNode?.insertBefore(customTag, this);
         const children = Array.prototype.slice.call(this.children);
         if (this.innerHTML === "") {
-            link.innerText = this.getAttribute("name")
+            customTag.innerText = this.getAttribute("name")
         }
-        // if (this.children) {
-        //     children.forEach(child => {
-        //         link.appendChild(child)
-        //     });
-        // };
+        
+        for (var i = 0; i < this.attributes.length; i++) {
+            const attribI = this.attributes[i];
+            for (var a = 0; a < this.attributes.length; a++) {
+                const attribA = this.attributes[i];
+                if(attribI.name === "to") {
+                }
+               else {
+                customTag.setAttribute(`${attribI.name}`, `${attribI.value}`)
+               }
+            }
+        }
         this.remove();
     }
 }
