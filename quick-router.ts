@@ -90,7 +90,6 @@ export class QuickRouter {
 
 export function createPopState(routes : any) {
     window.addEventListener("popstate", () => {
-        console.log("gg"); 
         QuickRouter.prototype.useRoute(routes)
     })
 }
