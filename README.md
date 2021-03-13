@@ -28,4 +28,4 @@ Made with <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.gi
 
 <a href="https://github.com/Echodesk-Technology/EchodeskTechnology/blob/main/README.md"><h3>MIT</h3></a>
 
-<h3>Copyright (c) 2021-present, Kehinde Akinsanya</h3># quick-router
+<h3>Copyright (c) 2021-present, Kehinde Akinsanya</h3>
