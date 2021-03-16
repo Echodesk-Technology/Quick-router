@@ -67,7 +67,12 @@ export class QuickRouter {
         window.addEventListener("click", (e: any) => {
             e.preventDefault();
             if (e.target.localName === "a") {
-                history.pushState(null, null, e.target.href);
+                 if(e.target.dataset.external) {
+                    location.href = e.target.href   
+                }
+                else {
+                    history.pushState(null, null, e.target.href);
+                } 
                 QuickRouter.prototype.useRoute(routes)
             }
         })
